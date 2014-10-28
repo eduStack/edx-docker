@@ -1,4 +1,4 @@
-from ubuntu:12.04.5
+from stackbrew/ubuntu:12.04
 maintainer  eduStack Project "http://eduStack.org"
 CMD ["/bin/bash"]
 run apt-get update
