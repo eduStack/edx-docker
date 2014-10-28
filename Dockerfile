@@ -7,4 +7,5 @@ run pip install --upgrade pip
 run pip install --upgrade virtualenv
 run (cd /var/tmp && git clone -b docker_release https://github.com/eduStack/configuration)
 run (cd /var/tmp/configuration && pip install -r requirements.txt)
-CMD ['bash','-c', 'cd /var/tmp/configuration/playbooks && sudo ansible-playbook -vv -c local -i "127.0.0.1," docker_lite.yml']
+CMD 
+run ['/bin/bash','-c', 'cd /var/tmp/configuration/playbooks && sudo ansible-playbook -vv -c local -i "127.0.0.1," docker_lite.yml']
