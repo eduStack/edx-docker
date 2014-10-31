@@ -8,4 +8,4 @@ run pip install --upgrade virtualenv
 run (cd /var/tmp && git clone -b docker_release https://github.com/eduStack/configuration)
 run (cd /var/tmp/configuration && pip install -r requirements.txt)
 workdir /var/tmp/configuration/playbooks
-run ansible-playbook -vv -c local -i inventory.ini docker_lite.yml
+run ansible-playbook -vv -c local --limit "localhost:127.0.0.1" -i "localhost," docker_lite.yml
