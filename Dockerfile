@@ -8,6 +8,10 @@ run pip install --upgrade virtualenv
 run (echo "[client]" >> ~/.my.cnf)
 run (echo "user=root" >> ~/.my.cnf)
 run (echo "password=" >> ~/.my.cnf)
+run (echo "[mysql]" >> ~/.my.cnf)
+run (echo "user=root" >> ~/.my.cnf)
+run (echo "password=" >> ~/.my.cnf)
+run (cat ~/.my.cnf)
 run (cd /var/tmp && git clone -b docker_release https://github.com/eduStack/configuration)
 run (cd /var/tmp/configuration && pip install -r requirements.txt)
 workdir /var/tmp/configuration/playbooks
