@@ -1,4 +1,5 @@
 FROM ubuntu:14.04.1
+RUN apt-get update && apt-get install -y curl
 RUN curl -sSL https://get.docker.com/ | sh
 ENV HOME /root
 RUN (cd /var/tmp && git clone -b docker_release https://github.com/eduStack/configuration)
