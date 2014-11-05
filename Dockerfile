@@ -9,5 +9,6 @@ run pip install --upgrade pip
 run pip install --upgrade virtualenv
 run (cd /var/tmp && git clone -b docker_release https://github.com/eduStack/configuration)
 run (cd /var/tmp/configuration && pip install -r requirements.txt)
-workdir /var/tmp/configuration/playbooks
-run ansible-playbook -vvvv -c local --limit "localhost:127.0.0.1" -i "localhost," docker_lite.yml
+run curl -o insecure_key -fSL https://github.com/phusion/baseimage-docker/raw/master/image/insecure_key
+run chmod 600 insecure_key
+run ssh -i insecure_key root@localhost cd /var/tmp/configuration/playbooks && ansible-playbook -vvvv -c local --limit "localhost:127.0.0.1" -i "localhost," docker_lite.yml
