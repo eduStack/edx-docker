@@ -7,4 +7,4 @@ RUN apt-get install -y openssh-server rsyslog bash sudo openssl ca-certificates 
 RUN pip install --upgrade pip
 RUN pip install --upgrade virtualenv
 WORKDIR /var/tmp/configuration/playbooks
-RUN sudo ansible-playbook -vvvv -c local --limit "localhost:127.0.0.1" -i "localhost," docker_lite.yml
+RUN ansible-playbook -vvvv -c local --limit "localhost:127.0.0.1" -i "localhost," docker_lite.yml
