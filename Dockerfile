@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.1
 RUN apt-get update
-RUN apt-get install docker.io
+RUN apt-get -y install docker.io
 RUN ln -sf /usr/bin/docker.io /usr/local/bin/docker
 RUN sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 ENV HOME /root
