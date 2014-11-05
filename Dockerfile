@@ -3,6 +3,7 @@ RUN apt-get update
 RUN apt-get -y install docker.io
 RUN ln -sf /usr/bin/docker.io /usr/local/bin/docker
 RUN sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+CMD ['/bin/bash','-c','source /etc/bash_completion.d/docker.io']
 ENV HOME /root
 RUN (cd /var/tmp && git clone -b docker_release https://github.com/eduStack/configuration)
 RUN docker run -i -t -d -v /var/tmp/configuration:/configuration phusion/baseimage /sbin/my_init --enable-insecure-key
