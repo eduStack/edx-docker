@@ -11,7 +11,7 @@ sudo sed -i 's/us.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.lis
 sudo apt-get update
 sudo apt-get install docker.io
 ##
-## Install docker
+## Pre setup
 ##
 sudo docker pull phusion/baseimage
 git clone https://github.com/eduStack/configuration.git -b docker_release ~/configuration
@@ -19,9 +19,15 @@ sudo docker run -i -t -d -v ~/configuration:/configuration phusion/baseimage /sb
 IP=$(docker inspect -f "{{ .NetworkSettings.IPAddress }}" `docker ps | cut -c1-20 | awk 'NR==2 {print}'`)
 curl -o insecure_key -fSL https://github.com/phusion/baseimage-docker/raw/master/image/insecure_key
 chmod 600 insecure_key
+##
+## Install edX
+##
 ssh -i insecure_key root@$IP apt-get update && apt-get install -y python-dev python-setuptools python-apt gcc && easy_install pip
 ssh -i insecure_key root@$IP cd /configuration && pip install -r requirements.txt
 ssh -i insecure_key root@$IP cd /configuration/playbooks && ansible-playbook -vv -c local -i "127.0.0.1," docker_lite.yml
+##
+## Push & commit
+##
 sudo docker stop `docker ps | cut -c1-20 | awk 'NR==2 {print}'`
 sudo docker commit -m="init" -a="Jason Zhu" `docker ps | cut -c1-20 | awk 'NR==2 {print}'` fmyzjs/edx-lite-cn:alpha
 sudo docker push fmyzjs/edx-lite-cn
