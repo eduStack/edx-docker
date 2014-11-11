@@ -1,0 +1,24 @@
+##
+## Change ubuntu repo
+##
+sudo cp  /etc/apt/sources.list  /etc/apt/sources.list.bak
+sudo sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sudo sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sudo sed -i 's/us.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+##
+## Install docker
+##
+sudo apt-get update
+sudo apt-get install docker.io
+##
+## Install docker
+##
+sudo docker pull phusion/baseimage
+git clone https://github.com/eduStack/configuration.git -b docker_release ~/configuration
+sudo docker run -i -t -d -v ~/configuration:/configuration phusion/baseimage /sbin/my_init --enable-insecure-key
+IP=$(docker inspect -f "{{ .NetworkSettings.IPAddress }}" `docker ps | cut -c1-20 | awk 'NR==2 {print}'`)
+curl -o insecure_key -fSL https://github.com/phusion/baseimage-docker/raw/master/image/insecure_key
+chmod 600 insecure_key
+ssh -i insecure_key root@$IP apt-get update && apt-get install -y python-dev python-setuptools python-apt gcc && easy_install pip
+ssh -i insecure_key root@$IP cd /configuration && pip install -r requirements.txt
+ssh -i insecure_key root@$IP cd /configuration/playbooks && ansible-playbook -vv -c local -i "127.0.0.1," docker_lite.yml
