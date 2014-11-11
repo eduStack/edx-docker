@@ -1,7 +1,7 @@
 FROM ubuntu:12.04.5
 MAINTAINER eduStack Project "http://edustack.org"
 RUN apt-get update
-RUN apt-get install -y curl
+RUN apt-get install -y curl git
 RUN curl https://get.docker.io/builds/Linux/x86_64/docker-latest -o /usr/local/bin/docker
 RUN chmod +x /usr/local/bin/docker
 ENV HOME /root
