@@ -1,0 +1,37 @@
+##############################
+## Ansible Playbook group_vars
+##
+COMMON_GIT_MIRROR: 'github.com'
+COMMON_PYPI_MIRROR_URL: 'http://pypi.mirrors.ustc.edu.cn/simple'
+EDXAPP_PLATFORM_NAME: 'eduX'
+
+EDXAPP_LANG: 'en_US.UTF-8'
+EDXAPP_LANGUAGE_CODE : 'zh-cn'
+EDXAPP_TIME_ZONE: 'Asia/Shanghai'
+
+EDXAPP_TECH_SUPPORT_EMAIL: 'stack@iflab.org'
+EDXAPP_CONTACT_EMAIL: 'stack@iflab.org'
+EDXAPP_BUGS_EMAIL: 'stack@iflab.org'
+EDXAPP_DEFAULT_FROM_EMAIL: 'stack@iflab.org'
+EDXAPP_DEFAULT_FEEDBACK_EMAIL: 'stack@iflab.org'
+EDXAPP_DEFAULT_SERVER_EMAIL: 'stack@iflab.org'
+EDXAPP_BULK_EMAIL_DEFAULT_FROM_EMAIL: 'stack@iflab.org'
+EDXAPP_UNIVERSITY_EMAIL: 'stack@iflab.org'
+EDXAPP_PRESS_EMAIL: 'stack@iflab.org'
+EDXAPP_PLATFORM_TWITTER_ACCOUNT: '@fmyzjs'
+EDXAPP_PLATFORM_FACEBOOK_ACCOUNT: 'http://www.facebook.com/fmyzjs'
+
+edxapp_use_custom_theme: true
+edxapp_theme_name: 'eduStack-theme'
+edxapp_theme_source_repo: 'git://github.com/eduStack/eduStack-theme.git'
+edxapp_theme_version: 'HEAD'
+
+edx_platform_repo: "https://github.com/appsembler/edx-platform.git"
+
+NLTK_DATA:
+  - { path: "taggers/maxent_treebank_pos_tagger",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/maxent_treebank_pos_tagger.zip" }
+  - { path: "corpora/stopwords",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/stopwords.zip" }
+  - { path: "corpora/wordnet",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/wordnet.zip" }
