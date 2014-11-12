@@ -1,0 +1,84 @@
+COMMON_PYPI_MIRROR_URL: 'http://pypi.douban.com/simple'
+COMMON_GIT_MIRROR: 'github.com'
+COMMON_SSH_PASSWORD_AUTH: "yes"
+
+
+COMMON_MYSQL_READ_ONLY_USER: 'read_only'
+COMMON_MYSQL_READ_ONLY_PASS: 'password'
+COMMON_MYSQL_ADMIN_USER: 'admin'
+COMMON_MYSQL_ADMIN_PASS: 'password'
+COMMON_MYSQL_MIGRATE_USER: 'migrate'
+COMMON_MYSQL_MIGRATE_PASS: 'password'
+
+COMMON_MONGO_READ_ONLY_USER: 'read_only'
+COMMON_MONGO_READ_ONLY_PASS: !!null
+COMMON_ENABLE_DATADOG: False
+COMMON_ENABLE_SPLUNKFORWARDER: False
+COMMON_ENABLE_NEWRELIC: False
+COMMON_TAG_EC2_INSTANCE: False
+
+MONGODB_REPO: "deb http://mirrors.bistu.edu.cn/mongodb/repo/ubuntu-upstart dist 10gen"
+
+EDXAPP_AWS_ACCESS_KEY_ID:  "YOUR_ID"
+EDXAPP_AWS_SECRET_ACCESS_KEY:  "YOUR_KEY"
+
+EDXAPP_LMS_BASE: 'www.edustack.net'
+EDXAPP_PREVIEW_LMS_BASE: 'preview.edustack.net'
+EDXAPP_CMS_BASE: 'studio.edustack.net'
+
+EDXAPP_PLATFORM_NAME: 'eduX'
+
+EDXAPP_SITE_NAME: 'www.edustack.net'
+EDXAPP_CMS_SITE_NAME: 'studio.edustack.net'
+
+EDXAPP_LANG: 'en_US.UTF-8'
+EDXAPP_LANGUAGE_CODE : 'zh-cn'
+EDXAPP_TIME_ZONE: 'Asia/Shanghai'
+
+EDXAPP_TECH_SUPPORT_EMAIL: 'stack@iflab.org'
+EDXAPP_CONTACT_EMAIL: 'stack@iflab.org'
+EDXAPP_BUGS_EMAIL: 'stack@iflab.org'
+EDXAPP_DEFAULT_FROM_EMAIL: 'stack@iflab.org'
+EDXAPP_DEFAULT_FEEDBACK_EMAIL: 'stack@iflab.org'
+EDXAPP_DEFAULT_SERVER_EMAIL: 'stack@iflab.org'
+EDXAPP_BULK_EMAIL_DEFAULT_FROM_EMAIL: 'stack@iflab.org'
+EDXAPP_UNIVERSITY_EMAIL: 'stack@iflab.org'
+EDXAPP_PRESS_EMAIL: 'stack@iflab.org'
+EDXAPP_PLATFORM_TWITTER_ACCOUNT: '@fmyzjs'
+EDXAPP_PLATFORM_FACEBOOK_ACCOUNT: 'http://www.facebook.com/fmyzjs'
+
+
+edxapp_use_custom_theme: true
+edxapp_theme_name: 'eduStack-theme'
+edxapp_theme_source_repo: 'git://github.com/eduStack/eduStack-theme.git'
+edxapp_theme_version: 'HEAD'
+
+edx_platform_repo: "https://github.com/edx/edx-platform.git"
+
+edx_ansible_source_repo: https://github.com/eduStack/configuration.git
+configuration_version: master
+
+discern_nltk_download_url: ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/nltk-data-20131113.tar.gz
+
+NLTK_DATA:
+  - { path: "taggers/maxent_treebank_pos_tagger",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/maxent_treebank_pos_tagger.zip" }
+  - { path: "corpora/stopwords",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/stopwords.zip" }
+  - { path: "corpora/wordnet",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/wordnet.zip" }
+
+
+XSERVER_NGINX_PORT: 18050
+XSERVER_GRADER_DIR: "{{ xserver_data_dir }}/data/content-test-xserver"
+XSERVER_GRADER_SOURCE: "https://github.com/antoviaque/xserver-grader.git"
+XSERVER_LOCAL_GIT_IDENTITY: "{{ secure_dir }}/files/git-identity"
+XSERVER_GIT_IDENTITY: "{{ secure_dir }}/files/git-identity"
+
+CERTS_REPO: "https://github.com/edx/read-only-certificate-code"
+CERTS_NGINX_PORT: 18090
+CERTS_URL: "http://www.edustack.net:{{ CERTS_NGINX_PORT }}"
+CERTS_DOWNLOAD_URL: "http://www.edustack.net:{{ CERTS_NGINX_PORT }}"
+CERTS_VERIFY_URL: "http://www.edustack.net:{{ CERTS_NGINX_PORT }}"
+
+

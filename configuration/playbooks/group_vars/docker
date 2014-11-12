@@ -26,7 +26,8 @@ edxapp_theme_name: 'eduStack-theme'
 edxapp_theme_source_repo: 'git://github.com/eduStack/eduStack-theme.git'
 edxapp_theme_version: 'HEAD'
 
-edx_platform_repo: "https://github.com/appsembler/edx-platform.git"
+edx_platform_repo: "https://github.com/edx/edx-platform.git"
+edx_platform_version: "release"
 
 NLTK_DATA:
   - { path: "taggers/maxent_treebank_pos_tagger",

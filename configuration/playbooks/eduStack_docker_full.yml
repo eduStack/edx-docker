@@ -1,0 +1,60 @@
+---
+
+# Example sandbox configuration
+# for single server community
+# installs
+
+- name: Configure instance(s)
+  hosts: all
+  sudo: True
+  gather_facts: True
+  vars:
+    migrate_db: "yes"
+    openid_workaround: True
+    EDXAPP_LMS_NGINX_PORT: '80'
+    edx_platform_version: 'release'
+    # Set to false if deployed behind another proxy/load balancer.
+    NGINX_SET_X_FORWARDED_HEADERS: True
+    # These should stay false for the public AMI
+    COMMON_ENABLE_DATADOG: False
+    COMMON_ENABLE_SPLUNKFORWARDER: False
+    OPENEDX_RELEASE: 'aspen.1'
+    # used for releases
+    edx_platform_version: 'docker_release'
+    ora2_version: '{{ OPENEDX_RELEASE | default("master") }}'
+    certs_version: '{{ OPENEDX_RELEASE | default("master") }}'
+    forum_version: '{{ OPENEDX_RELEASE | default("master") }}'
+    xqueue_version: '{{ OPENEDX_RELEASE | default("master") }}'
+  roles:
+    - edx_ansible
+    - { role: 'docker', version: 'full', tags: 'runit' }
+    - role: nginx
+      nginx_sites:
+      - cms
+      - lms
+      - forum
+      - xqueue
+      - certs
+      nginx_default_sites:
+      - lms
+      - cms
+    - edxlocal
+    - mongo
+    - { role: 'edxapp', celery_worker: True }
+    - edxapp
+    - demo
+    - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1', tags: "rabbit"}
+    - oraclejdk
+    - elasticsearch
+    - forum
+    - { role: "xqueue", update_users: True }
+    - certs
+    - edx_ansible
+    - role: datadog
+      when: COMMON_ENABLE_DATADOG
+    - role: splunkforwarder
+      when: COMMON_ENABLE_SPLUNKFORWARDER
+    - role: newrelic
+      when: COMMON_ENABLE_NEWRELIC
+    # run the docker scripts again to relink init.d scripts to runit
+    - { role: 'docker', version: 'full', tags: 'docker' }

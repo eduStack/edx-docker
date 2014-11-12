@@ -1,0 +1,37 @@
+COMMON_PYPI_MIRROR_URL: 'http://pypi.douban.com/simple'
+COMMON_GIT_MIRROR: 'github.com'
+COMMON_SSH_PASSWORD_AUTH: "yes"
+
+MONGODB_REPO: "deb http://mirrors.bistu.edu.cn/mongodb/repo/ubuntu-upstart dist 10gen"
+
+edxapp_use_custom_theme: true
+edxapp_theme_name: 'eduStack-theme'
+edxapp_theme_source_repo: 'git://github.com/eduStack/eduStack-theme.git'
+edxapp_theme_version: 'HEAD'
+
+edx_platform_repo: "https://github.com/edx/edx-platform.git"
+
+edx_ansible_source_repo: https://github.com/eduStack/configuration.git
+configuration_version: master
+
+discern_nltk_download_url: ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/nltk-data-20131113.tar.gz
+
+NLTK_DATA:
+  - { path: "taggers/maxent_treebank_pos_tagger",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/maxent_treebank_pos_tagger.zip" }
+  - { path: "corpora/stopwords",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/stopwords.zip" }
+  - { path: "corpora/wordnet",
+      url: "ftp://ftp.bistu.edu.cn/OpenSource/nltk_data/wordnet.zip" }
+
+browser_s3_deb_pkgs:
+    - { name: "google-chrome-stable_30.0.1599.114-1_amd64.deb", url: "ftp://ftp.bistu.edu.cn/OpenSource/google-chrome-stable_30.0.1599.114-1_amd64.deb" }
+    - { name: "firefox_28.0+build2-0ubuntu0.12.04.1_amd64.deb", url: "ftp://ftp.bistu.edu.cn/OpenSource/firefox_28.0%20build2-0ubuntu0.12.04.1_amd64.deb" }
+
+chromedriver_url: "ftp://ftp.bistu.edu.cn/OpenSource/chromedriver_linux64.zip"
+
+browsermob_proxy_url: 'ftp://ftp.bistu.edu.cn/OpenSource/browsermob-proxy-2.0-beta-9-bin.zip'
+
+localdev_user: "iflab"
+localdev_home: "/home/iflab"
+
