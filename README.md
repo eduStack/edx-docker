@@ -1,4 +1,4 @@
-edx-docker
+edx-manual
 ==========
 
-Ubuntu14.04 .....
+ .....
