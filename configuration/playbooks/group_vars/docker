@@ -3,6 +3,9 @@
 ##
 COMMON_GIT_MIRROR: 'github.com'
 COMMON_PYPI_MIRROR_URL: 'http://pypi.mirrors.ustc.edu.cn/simple'
+
+MONGODB_REPO: "deb http://mirrors.bistu.edu.cn/mongodb/repo/ubuntu-upstart dist 10gen"
+
 EDXAPP_PLATFORM_NAME: 'eduX'
 
 EDXAPP_LANG: 'en_US.UTF-8'
