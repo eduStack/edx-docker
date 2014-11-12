@@ -25,7 +25,7 @@ chmod 600 insecure_key
 ##
 ssh -i insecure_key root@$IP cp /etc/apt/sources.list  /etc/apt/sources.list.bak
 ssh -i insecure_key root@$IP sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-ssh -i insecure_key root@$IP sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+ssh -i insecure_key root@$IP sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 ssh -i insecure_key root@$IP apt-get update && apt-get install -y python-dev python-setuptools python-apt gcc && easy_install pip
 ssh -i insecure_key root@$IP cd /configuration && pip install -r requirements.txt
 ssh -i insecure_key root@$IP cd /configuration/playbooks && ansible-playbook -vv -c local -i "127.0.0.1," docker_lite.yml
