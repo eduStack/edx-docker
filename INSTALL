@@ -16,7 +16,8 @@ sudo apt-get install docker.io
 sudo docker pull phusion/baseimage
 git clone https://github.com/eduStack/configuration.git -b docker_release ~/configuration
 sudo docker run -i -t -d -v ~/configuration:/configuration phusion/baseimage /sbin/my_init --enable-insecure-key
-IP=$(docker inspect -f "{{ .NetworkSettings.IPAddress }}" `docker ps | cut -c1-20 | awk 'NR==2 {print}'`)
+ID=$(sudo docker ps | cut -c1-20 | awk 'NR==2 {print}')
+IP=$(sudo docker inspect -f "{{ .NetworkSettings.IPAddress }}" $ID)
 curl -o insecure_key -fSL https://github.com/phusion/baseimage-docker/raw/master/image/insecure_key
 chmod 600 insecure_key
 ##
@@ -28,6 +29,6 @@ ssh -i insecure_key root@$IP cd /configuration/playbooks && ansible-playbook -vv
 ##
 ## Push & commit
 ##
-sudo docker stop `docker ps | cut -c1-20 | awk 'NR==2 {print}'`
-sudo docker commit -m="init" -a="Jason Zhu" `docker ps | cut -c1-20 | awk 'NR==2 {print}'` fmyzjs/edx-lite-cn:alpha
+sudo docker stop $ID
+sudo docker commit -m="init" -a="Jason Zhu" $ID fmyzjs/edx-lite-cn:alpha
 sudo docker push fmyzjs/edx-lite-cn
