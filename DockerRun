@@ -1,0 +1,27 @@
+##
+## Change ubuntu repo
+##
+sudo cp  /etc/apt/sources.list  /etc/apt/sources.list.bak
+sudo sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sudo sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sudo sed -i 's/us.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+
+##
+## Install docker
+##
+sudo apt-get update
+sudo apt-get install docker.io
+
+##
+## Run docker Container
+##
+sudo docker run -d  -p 80:80 -p 18010:18010 -i fmyzjs/edx-lite-cn:0.1
+
+##
+## Login Container
+##
+ID=$(sudo docker ps | cut -c1-20 | awk 'NR==2 {print}')
+IP=$(sudo docker inspect -f "{{ .NetworkSettings.IPAddress }}" $ID)
+curl -o insecure_key -fSL https://github.com/phusion/baseimage-docker/raw/master/image/insecure_key
+chmod 600 insecure_key
+ssh -i insecure_key root@$IP
