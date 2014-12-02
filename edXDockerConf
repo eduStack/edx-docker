@@ -10,6 +10,8 @@ fi
 ##
 ## Change ubuntu repo
 ##
+## mirrors.ustc.edu.cn
+## cn.archive.ubuntu.com
 sudo cp  /etc/apt/sources.list  /etc/apt/sources.list.bak
 sudo sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 sudo sed -i 's/cn.archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
